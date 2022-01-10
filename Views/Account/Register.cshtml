@@ -1,11 +1,9 @@
 ﻿@model IdentityExp2.Models.ViewModels.RegisterViewModel
 
-<h2>Criar Conta</h2>
+<h4>Criar Conta</h4>
 
 <form method="post" asp-action="Register" asp-controller="Account">
-    <h4>Criar nova conta</h4>
     <hr />
-    @*<div asp-validation-summary="All" class="text-danger"></div>*@
     <div class="form-group row">
         <label class="col-md-2" asp-for="Name"></label>
         <div class=" col-md-10">
@@ -40,7 +38,6 @@
             <select asp-for="RoleName"
                     asp-items="@IdentityExp2.Utility.Helper.GetRolesDropdown()"
                     class="form-control"></select>
-            <span asp-validation-for="ConfirmPassword" class="text-danger"></span>
         </div>
     </div>
     <div class="form-group">
@@ -53,6 +50,7 @@
     </p>
 </form>
 
-@section Scripts{ 
-<partial name="_ValidationScriptsPartial" />
+@section Scripts{
+    <partial name="_ValidationScriptsPartial" />
+
 }

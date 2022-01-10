@@ -1,5 +1,6 @@
 ﻿using IdentityExp2.Models;
 using IdentityExp2.Models.ViewModels;
+using IdentityExp2.Utility;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using System;
@@ -31,10 +32,18 @@ namespace IdentityExp2.Controllers
             return View();
         }
 
-        public IActionResult Register()
+        public async Task<IActionResult> Register()
         {
+            if (!_roleManager.RoleExistsAsync(Helper.Admin).GetAwaiter().GetResult())
+            {
+                await _roleManager.CreateAsync(new IdentityRole(Helper.Admin));
+                await _roleManager.CreateAsync(new IdentityRole(Helper.Teacher));
+                await _roleManager.CreateAsync(new IdentityRole(Helper.Student));
+            }
             return View();
         }
+
+
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Register(RegisterViewModel model)
@@ -51,6 +60,7 @@ namespace IdentityExp2.Controllers
                 var result = await _userManager.CreateAsync(user);
                 if (result.Succeeded)
                 {
+                    await _userManager.AddToRoleAsync(user, model.RoleName);
                     await _signInManager.SignInAsync(user, isPersistent: false);
                     return RedirectToAction("Index", "Home");
                 }

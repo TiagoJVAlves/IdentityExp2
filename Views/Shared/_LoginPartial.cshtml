@@ -1,7 +1,16 @@
-﻿@inject Microsoft.AspNetCore.Identity.SignInManager<Microsoft.AspNetCore.Identity.IdentityUser> signInManager
+﻿@inject Microsoft.AspNetCore.Identity.SignInManager<IdentityExp2.Models.ApplicationUser> signInManager
 @if (signInManager.IsSignedIn(User))
 {
-
+    <form id="logoutform" asp-action="Logoff" asp-controller="Account">
+        <ul class="nav navbar-nav">
+            <li class="nav-link">
+                Olá, @User.Identity.Name!
+            </li>
+            <li class="nav-link">
+                <a href="javascript:document.getElementById('logoutform').submit()">Sair</a>
+            </li>
+        </ul>
+    </form>
 }
 else 
 {

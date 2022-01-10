@@ -14,31 +14,23 @@ namespace IdentityExp2.Models.ViewModels
 
         [Required]
         [EmailAddress]
-        [Display(Name = "Email")]
         public string Email { get; set; }
 
         [Required]
-        [StringLength(100, ErrorMessage = "The {0} must be at least {2} characters long.", MinimumLength = 6)]
         [DataType(DataType.Password)]
-        [Display(Name = "Password")]
+        [StringLength(100, ErrorMessage = "The {0} must be at least {2} characters long.", MinimumLength = 6)]
         public string Password { get; set; }
 
-        [Required]
-        [StringLength(15, ErrorMessage = "The {0} must be at least {2} characters long.", MinimumLength = 9)]
-        [RegularExpression("([0-9])", ErrorMessage = "Só pode Conter números")]
-        public string TelephoneNumber { get; set; }
-
         [DataType(DataType.Password)]
-        [Display(Name = "Confirme password")]
-        [Compare("Password", ErrorMessage = "As password de confirmação não é igual")]
+        [Display(Name = "Confirm Password")]
+        [Compare("Password", ErrorMessage = "The password and confirmation password do not match.")]
         public string ConfirmPassword { get; set; }
-        
         [Required]
-        [Display(Name = "Role name")]
-        public string RoleName{ get; set; }
+        [Display(Name = "Role Name")]
+        public string RoleName { get; set; }
 
-       // [NotMapped]
-       // public IEnumerable<SelectListItem> RoleList { get; set; }
+        // [NotMapped]
+        // public IEnumerable<SelectListItem> RoleList { get; set; }
 
     }
 }
