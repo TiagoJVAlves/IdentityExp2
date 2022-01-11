@@ -46,6 +46,5 @@ namespace IdentityExp2.Services
                             ).ToList();
             return students;
         }
-
     }
 }

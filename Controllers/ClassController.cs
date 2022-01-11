@@ -17,7 +17,7 @@ namespace IdentityExp2.Controllers
         }
         public IActionResult Index()
         {
-            _classService.GetTeacherList();
+            ViewBag.TeacherList = _classService.GetTeacherList();
             return View();
         }
     }

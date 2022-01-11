@@ -1,0 +1,11 @@
+﻿<div class="row">
+    <div class="container">
+        @if(User.IsInRole(IdentityExp2.Utility.Helper.Admin)) 
+        { 
+            <div class="form-group row col-2" id="divTeacherList">
+                <label>Escolha o professor</label>
+                @Html.DropDownList("teacherId",new SelectList(ViewBag.TeacherList, "Id", "Name"), new {@class="form-control select2"})
+            </div>
+        } 
+    </div>
+</div>

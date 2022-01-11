@@ -60,7 +60,7 @@ namespace IdentityExp2.Controllers
             return View();
         }
 
-        [Authorize(Roles = "Admin")]
+
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Register(RegisterViewModel model)
