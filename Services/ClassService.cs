@@ -9,12 +9,12 @@ using System.Threading.Tasks;
 
 namespace IdentityExp2.Services
 {
-    public class AppointmentService : IAppointmentService
+    public class ClassService : IClassService
     {
 
         private readonly ApplicationDbContext _db;
 
-        public AppointmentService(ApplicationDbContext db)
+        public ClassService(ApplicationDbContext db)
         {
             _db = db;
         }

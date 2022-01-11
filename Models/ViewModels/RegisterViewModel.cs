@@ -7,6 +7,7 @@ using System.Threading.Tasks;
 
 namespace IdentityExp2.Models.ViewModels
 {
+
     public class RegisterViewModel
     {
         [Required]

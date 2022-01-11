@@ -31,7 +31,7 @@ namespace IdentityExp2
                 (options => options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
             services.AddControllersWithViews();
 
-            services.AddTransient<IAppointmentService, AppointmentService>();
+            services.AddTransient<IClassService, ClassService>();
             services.AddIdentity<ApplicationUser, IdentityRole>().AddEntityFrameworkStores<ApplicationDbContext>();
         }
 

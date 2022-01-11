@@ -1,6 +1,7 @@
 ﻿using IdentityExp2.Models;
 using IdentityExp2.Models.ViewModels;
 using IdentityExp2.Utility;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using System;
@@ -41,7 +42,7 @@ namespace IdentityExp2.Controllers
                 var result = await _signInManager.PasswordSignInAsync(model.Email, model.Password, model.RememberMe, false);
                 if (result.Succeeded)
                 {
-                    return RedirectToAction("Index", "Appointment");
+                    return RedirectToAction("Index", "Home");
                 }
                 ModelState.AddModelError("", "Tentativa de Login Inválida");
             }
@@ -59,7 +60,7 @@ namespace IdentityExp2.Controllers
             return View();
         }
 
-
+        [Authorize(Roles = "Admin")]
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Register(RegisterViewModel model)

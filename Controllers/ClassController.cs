@@ -7,17 +7,17 @@ using System.Threading.Tasks;
 
 namespace IdentityExp2.Controllers
 {
-    public class AppointmentController : Controller
+    public class ClassController : Controller
     {
-        private readonly IAppointmentService _appointmentService;
+        private readonly IClassService _classService;
 
-        public AppointmentController(IAppointmentService appointmentService)
+        public ClassController(IClassService classService)
         {
-            _appointmentService = appointmentService;
+            _classService = classService;
         }
         public IActionResult Index()
         {
-            _appointmentService.GetTeacherList();
+            _classService.GetTeacherList();
             return View();
         }
     }

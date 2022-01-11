@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace IdentityExp2.Services
 {
-    public interface IAppointmentService
+    public interface IClassService
     {
         public List<TeacherViewModel> GetTeacherList();
         public List<StudentViewModel> GetStudentList();
