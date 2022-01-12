@@ -1,11 +1,22 @@
 ﻿<div class="row">
     <div class="container">
-        @if(User.IsInRole(IdentityExp2.Utility.Helper.Admin)) 
-        { 
+        @if (User.IsInRole(IdentityExp2.Utility.Helper.Admin))
+        {
             <div class="form-group row col-2" id="divTeacherList">
-                <label>Escolha o professor</label>
-                @Html.DropDownList("teacherId",new SelectList(ViewBag.TeacherList, "Id", "Name"), new {@class="form-control select2"})
+                <label>Professores</label>
+                @Html.DropDownList("teacherId", new SelectList(ViewBag.TeacherList, "Id", "Name"), new { @class = "form-control select2" })
             </div>
-        } 
+            <div class="form-group row col-2" id="divTeacherList">
+                <label>Alunos</label>
+                @Html.DropDownList("studentId", new SelectList(ViewBag.StudentList, "Id", "Name"), new { @class = "form-control select2" })
+            </div>           
+            <button type="button" class="btn btn-danger m-1" data-toggle="modal" data-target="#classInput">
+                AddEditClass
+            </button>
+            @await Html.PartialAsync("_AddEditClass")
+        }
+        else
+        { <h4>Não autorizado</h4>}
     </div>
 </div>
+<partial name="_AddEditClass" />

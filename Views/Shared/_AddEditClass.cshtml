@@ -1,0 +1,40 @@
+﻿<script>
+    function onCloseModal() {
+        $("#classInput").modal("hide");
+    }
+</script>
+<div class="modal fade" role="dialog" id="classInput" data-backdrop="static" data-keyboard="false">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <form id="classForm">
+                <div class="modal-header">
+                    <h4 class="modal-title">Adicionar Editar Turma</h4>
+                </div>
+                <div class="modal-body">
+                    <div class="form-group">
+                        <label for="title">Titulo</label>
+                        <input type="text" class="form-control" id="title" />
+                    </div>
+                    <div class="form-group">
+                        <label for="description">Descrição</label>
+                        <textarea typeof="text" class="form-control" id="title"></textarea>
+                    </div>
+                    <div class="form-group">
+                        <label for="description">Selecionar Professor</label>
+                        <select id="studentId" asp-items="@(new SelectList(ViewBag.TeacherList, "Id", "Name"))" class="form-control"></select>
+                    </div>
+                    <div class="form-group">
+                        <label for="description">Selecionar Aluno</label>
+                        <select id="studentId" asp-items="@(new SelectList(ViewBag.StudentList, "Id", "Name"))" class="form-control"></select>
+                    </div>
+                    <input type="hidden" id="id" />
+                </div>
+                <div>
+                    <button type="button" class="btn btn-secondary" onclick="onCloseModal();">Fechar</button>&nbsp;
+                    <button type="button" id="btnSubmit" class="btn btn-success" onclick="onSubmitForm();">Guardar</button>
+                    @*<button type="button" class="btn btn-secondary" onclick="onCloseModal();">Fechar</button>&nbsp;*@
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
